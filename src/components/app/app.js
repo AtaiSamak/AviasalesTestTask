@@ -81,21 +81,6 @@ export default class App extends Component {
 
     render() {
         const {setting, categoryPanel: ctgs, numberOfTickets} = this.state;
-        let btn;  
-
-        if(numberOfTickets === 5) {
-            btn = <Button
-                    label={"Показать еще 5 билетов!"}
-                    active={true}
-                    onChange={() => this.onShowMoreNoT(5)}
-                    btnType={'footer'}/>
-        } else {
-            btn = <Button
-                    label={"Скрыть!"}
-                    active={true}
-                    onChange={() => this.onShowMoreNoT(-5)}
-                    btnType={'footer'}/>
-        }
 
         return (
             <StyledApp>
@@ -112,7 +97,11 @@ export default class App extends Component {
                             filter={setting}
                             category={ctgs[ctgs.findIndex((item) => item.active)].id}
                             numOfTickets={numberOfTickets}/>
-                        {btn}
+                        <Button
+                            label={numberOfTickets === 5 ?"Показать еще 5 билетов!" : "Скрыть!"}
+                            active={true}
+                            onChange={numberOfTickets === 5? () => this.onShowMoreNoT(5) : () => this.onShowMoreNoT(-5)}
+                            btnType={'footer'}/>
                     </div>
                 </Container>
             </StyledApp>
