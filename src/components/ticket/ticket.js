@@ -1,34 +1,10 @@
-import React, { Component } from "react";
-import GetService from "../../service/getService";
-import Spinner from "../spinner/spinner";
+import React from "react";
 import TicketItem from "../ticketItem";
-import ErrorMsg from "../errorMsg";
+import withData from "../../service/withData";
 
-export default class Ticket extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tickets: [],
-            error: false
-        }
-    }
-
-    getService = new GetService();
-
-    componentDidMount() {
-        this.getTickets();
-    }
-
-    getTickets() {
-        this.getService.getTickets()
-        .then((data) => {
-            this.setState({tickets: data.tickets});
-        })
-        .catch(() => this.setState({error: true})) 
-    }
-
-    filterTickets(setting, numOfTickets) {
-        const {tickets} = this.state;
+const Ticket = (props) => {
+    const filterTickets = (setting, numOfTickets) => {
+        const {tickets} = props;
         if(setting[setting.findIndex((item) => item.id === "all")].active) {
             return tickets.slice(0, numOfTickets);
         }
@@ -40,7 +16,7 @@ export default class Ticket extends Component {
         return sortedTickets.slice(0, numOfTickets);
     }
 
-    sortTickets = (tickets, category) => {
+    const sortTickets = (tickets, category) => {
         if(category === "cheep") {
             return tickets.sort((a, b) => a.price > b.price ? 1 : -1);
         }
@@ -51,26 +27,19 @@ export default class Ticket extends Component {
         }
     }
 
-    render() {
-        if(this.state.error) {
-            return <ErrorMsg/>
-        }
-        if(!this.state.tickets.length) {
-            return <Spinner/>
-        }
-
-        const {filter, numOfTickets, category} = this.props;
-        const tickets = this.sortTickets(this.filterTickets(filter, numOfTickets), category);
-        const elements = tickets.map((ticket, index) => {
-            return <TicketItem
-                        ticket={ticket}
-                        key={index}/>
-        });
+    const {filter, numOfTickets, category} = props;
+    const tickets = sortTickets(filterTickets(filter, numOfTickets), category);
+    const elements = tickets.map((ticket, index) => {
+        return <TicketItem
+                    ticket={ticket}
+                    key={index}/>
+    });
         
-        return (
-            <>
-                {elements}
-            </>
-        )
-    }
+    return (
+        <>
+            {elements}
+        </>
+    )
 }
+
+export default withData(Ticket);
