@@ -1,22 +1,28 @@
-# Тестовое задание Aviasales ([frontend](https://aviasales.recruitee.com/o/frontend-developer-js-coffeescript-react%C2%A0redux--aviasalesru))
+# Installation & Usage
 
-Основной frontend проект нашей команды — это страница выдачи билетов со множеством фильтров, настроек и, собственно, билетов.
-Проект написан на React, поэтому тестовое задание приближено к ежедневным задачам.
+#### 1. Download/Clone this repo
 
-Перед тобой упрощенный макет нашего проекта — список билетов, фильтры и сортировка. Также у нас есть небольшой сервер для тестового задания, который работает схоже с нашим основным backend движком и реализует технику long polling для передачи пачек билетов. Тебе необходимо реализовать клиент, который будет получать случайно сгенерированные билеты от сервера и отрисует интерфейс согласно макету в Figma. Достаточно будет отрендерить 5 первых билетов соотвествующих выбранным фильтрам и сортировки.
+```
+git clone https://github.com/AtaiSamak/AviasalesTestTask.git
+```
 
-## Условия
+#### 2. `cd` into the root directory and run `npm install`
 
-- Используй React
-- Используй TS или JS
-- Работоспособность в актуальной версии Google Chrome
-- Остальное на твоё усмотрение
+```
+cd .\AviasalesTestTask\
+npm install
+```
 
-## Документация по работе с сервером: [Здесь](https://github.com/KosyanMedia/test-tasks/blob/master/aviasales_frontend/server.md)
+Downloads a package and it's dependencies.
 
-## Макет (Figma)
-https://github.com/KosyanMedia/test-tasks/raw/f0f60244b045928746188a86ba4f76ddb5515111/aviasales_frontend/Aviasales%20Test%20Task.fig
+#### 3 Start
 
-Удачи! Если будут какие-то вопросы, пиши – добавим уточнения в репу.
+```
+npm start
+```
 
-P.S.: Картинки авиакомпаний можешь брать с нашего CDN: `//pics.avs.io/99/36/{IATA_CODE_HERE}.png`
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+# Link to the task description
+[https://github.com/KosyanMedia/test-tasks/tree/master/aviasales_frontend](https://github.com/KosyanMedia/test-tasks/tree/master/aviasales_frontend)
