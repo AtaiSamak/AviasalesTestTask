@@ -15,7 +15,7 @@ npm install
 
 Downloads a package and it's dependencies.
 
-#### 3. Start
+#### 3. Start in the development mode
 
 ```
 npm start
